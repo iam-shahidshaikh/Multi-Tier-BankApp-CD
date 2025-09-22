@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
-  namespace: bankapps
+  namespace: bankapp
 spec:
   selector:
     matchLabels:
