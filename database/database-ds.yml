@@ -31,7 +31,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mysql-service
-  namespace: bankapps
+  namespace: bankapp
 spec:
   selector:
     app: mysql
