@@ -1,10 +1,9 @@
 ---
-# MySQL Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
-  namespace: argocd1
+  namespace: bankapps
 spec:
   selector:
     matchLabels:
@@ -17,8 +16,8 @@ spec:
         app: mysql
     spec:
       containers:
-      - image: mysql:8
-        name: mysql
+      - name: mysql
+        image: mysql:8
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: "Test@123"
@@ -28,17 +27,14 @@ spec:
         - containerPort: 3306
           name: mysql
 ---
-# MySQL Service
 apiVersion: v1
 kind: Service
 metadata:
   name: mysql-service
-  namespace: argocd1
+  namespace: bankapps
 spec:
-  type: ClusterIP
   selector:
     app: mysql
   ports:
   - port: 3306
     targetPort: 3306
-    name: mysql
